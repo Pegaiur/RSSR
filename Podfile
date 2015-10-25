@@ -3,3 +3,5 @@ use_frameworks!
 
 pod 'MWFeedParser'
 pod 'SnapKit'
+pod 'SVProgressHUD'
+pod 'XCGLogger'

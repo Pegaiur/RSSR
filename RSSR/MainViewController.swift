@@ -12,12 +12,12 @@ import SnapKit
 
 class MainViewController: UITableViewController,MWFeedParserDelegate {
     
+    var url = NSURL()
     var items = [MWFeedItem]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = NSURL(string: "http://www.zhihu.com/rss")
-        let feedParser = MWFeedParser(feedURL: url)
+        let feedParser = MWFeedParser(feedURL: self.url)
         feedParser.delegate = self
         feedParser.feedParseType = ParseTypeItemsOnly
         feedParser.connectionType = ConnectionTypeAsynchronously
