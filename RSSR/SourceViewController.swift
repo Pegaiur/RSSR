@@ -21,8 +21,12 @@ class SourceViewController: UITableViewController,MWFeedParserDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.sources.append(RRSourceComplex())
+        for _ in 0...2 {
+            self.sources.append(RRSourceComplex())
+        }
         self.sources[0].url = NSURL(string: "http://www.zhihu.com/rss")!
+        self.sources[1].url = NSURL(string: "http://feeds.feedburner.com/zhihu-daily")!
+        self.sources[2].url = NSURL(string: "http://v2ex.com/feed/tab/tech.xml")!
         for source in sources {
             let feedParser = MWFeedParser(feedURL: source.url)
             feedParser.delegate = self
@@ -30,6 +34,12 @@ class SourceViewController: UITableViewController,MWFeedParserDelegate {
             feedParser.connectionType = ConnectionTypeAsynchronously
             feedParser.parse()
         }
+        SVProgressHUD.show()
+        self.navigationItem.title = "R S S R"
+        
+        let backItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backItem
+        
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
@@ -50,6 +60,20 @@ class SourceViewController: UITableViewController,MWFeedParserDelegate {
         return cell
     }
     
+//  MARK:UITableViewDelegate
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let c = MainViewController()
+        c.navigationItem.title = self.sources[indexPath.row].title
+        c.url = self.sources[indexPath.row].url
+        let feedParser = MWFeedParser(feedURL: c.url)
+        feedParser.delegate = c
+        feedParser.feedParseType = ParseTypeItemsOnly
+        feedParser.connectionType = ConnectionTypeAsynchronously
+        feedParser.parse()
+        self.navigationController?.pushViewController(c, animated: true)
+    }
+    
 //  MARK:MWFeedParserDelegate
     
     func feedParser(parser: MWFeedParser!, didParseFeedInfo info: MWFeedInfo!) {
@@ -59,11 +83,24 @@ class SourceViewController: UITableViewController,MWFeedParserDelegate {
                 self.tableView.reloadData()
             }
         }
+        var finished = false
+        for source in self.sources {
+            if source.title != "" {
+                finished = true
+            } else {
+                finished = false
+                return
+            }
+        }
+        if finished {
+            SVProgressHUD.dismiss()
+        }
+
     }
 
     func feedParser(parser: MWFeedParser!, didFailWithError error: NSError!) {
         if let e = error {
-            SVProgressHUD.showErrorWithStatus("\(e.code)")
+            SVProgressHUD.showErrorWithStatus("\(e)")
         }
     }
 }

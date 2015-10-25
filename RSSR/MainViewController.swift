@@ -9,6 +9,7 @@
 import UIKit
 import MWFeedParser
 import SnapKit
+import SVProgressHUD
 
 class MainViewController: UITableViewController,MWFeedParserDelegate {
     
@@ -22,14 +23,9 @@ class MainViewController: UITableViewController,MWFeedParserDelegate {
         feedParser.feedParseType = ParseTypeItemsOnly
         feedParser.connectionType = ConnectionTypeAsynchronously
         feedParser.parse()
-    }
-    
-//  MARK:MWFeedParserDelegate
-    
-    
-    func feedParser(parser: MWFeedParser!, didParseFeedItem item: MWFeedItem!) {
-        self.items.append(item)
-        self.tableView.reloadData()
+        
+        let backItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backItem
     }
     
 //  MARK:UITableViewDataSource
@@ -56,10 +52,10 @@ class MainViewController: UITableViewController,MWFeedParserDelegate {
 //  MARK:UITableViewDelegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        let url = NSURL(string: self.sources[indexPath.section].items[indexPath.row].link)
-//        let c = WebViewController()
-//        c.url = url!
-//        self.navigationController?.pushViewController(c, animated: true)
+        let url = NSURL(string: self.items[indexPath.row].link)
+        let c = WebViewController()
+        c.url = url!
+        c.navigationItem.title = "Reading"
         if let title = self.items[indexPath.row].title {
             print(title)
         }
@@ -76,6 +72,7 @@ class MainViewController: UITableViewController,MWFeedParserDelegate {
             print(updated)
         }
         if let summary = self.items[indexPath.row].summary {
+            c.webView.loadHTMLString(summary, baseURL: url)
             print(summary)
         }
         if let content = self.items[indexPath.row].content {
@@ -87,6 +84,15 @@ class MainViewController: UITableViewController,MWFeedParserDelegate {
         if let identifier = self.items[indexPath.row].identifier {
             print(identifier)
         }
+        
+        self.navigationController?.pushViewController(c, animated: true)
+    }
+    
+//  MARK:MWFeedParserDelegate
+    
+    func feedParser(parser: MWFeedParser!, didParseFeedItem item: MWFeedItem!) {
+        self.items.append(item)
+        self.tableView.reloadData()
     }
 }
 
