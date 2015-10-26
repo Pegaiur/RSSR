@@ -9,6 +9,7 @@
 import UIKit
 import MWFeedParser
 import SVProgressHUD
+import YNLib
 
 struct RRSourceComplex {
     var title = ""
@@ -21,13 +22,14 @@ class SourceViewController: UITableViewController,MWFeedParserDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        for _ in 0...3 {
+        for _ in 0...4 {
             self.sources.append(RRSourceComplex())
         }
         self.sources[0].url = NSURL(string: "http://www.zhihu.com/rss")!
         self.sources[1].url = NSURL(string: "http://feeds.feedburner.com/zhihu-daily")!
         self.sources[2].url = NSURL(string: "http://v2ex.com/feed/tab/tech.xml")!
         self.sources[3].url = NSURL(string: "http://techcrunch.cn/feed/")!
+        self.sources[4].url = NSURL(string: "http://www.theverge.com/tech/rss/index.xml")!
         for source in sources {
             let feedParser = MWFeedParser(feedURL: source.url)
             feedParser.delegate = self
@@ -82,6 +84,14 @@ class SourceViewController: UITableViewController,MWFeedParserDelegate {
             if self.sources[i].url == parser.url {
                 self.sources[i].title = info.title
                 self.tableView.reloadData()
+                if let context = CoreDataManager.sharedManager.mainContext {
+                    let source = CoreDataHelper.createEntityForClass(CDSource.self, context: context)
+                    source.title = info.title
+                    source.link = info.link
+                    source.summary = info.summary
+                    source.lastUpdateTime = NSDate()
+                    context.saveIgnoreErrorWithParentContextAndWait()
+                }
             }
         }
         var finished = false

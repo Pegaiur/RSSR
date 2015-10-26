@@ -12,6 +12,8 @@
 		7BB8CE201BDE2B2600D9370E /* CDItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8CE1C1BDE2B2600D9370E /* CDItem.swift */; };
 		7BB8CE211BDE2B2600D9370E /* CDSource+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8CE1D1BDE2B2600D9370E /* CDSource+CoreDataProperties.swift */; };
 		7BB8CE221BDE2B2600D9370E /* CDSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8CE1E1BDE2B2600D9370E /* CDSource.swift */; };
+		7BB8CE241BDE2DDA00D9370E /* YNLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BB8CE161BDDF6F100D9370E /* YNLib.framework */; };
+		7BB8CE251BDE2DDA00D9370E /* YNLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7BB8CE161BDDF6F100D9370E /* YNLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BE067CC61BDD0A9B007FFEA9 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE067CC51BDD0A9B007FFEA9 /* WebViewController.swift */; };
 		BE067CC81BDD1D3B007FFEA9 /* SourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE067CC71BDD1D3B007FFEA9 /* SourceViewController.swift */; };
 		BECE499E1BDBDEB90038BD26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECE499D1BDBDEB90038BD26 /* AppDelegate.swift */; };
@@ -38,6 +40,13 @@
 			remoteGlobalIDString = B486F59F1BC66C07002AF53D;
 			remoteInfo = YNLibTests;
 		};
+		7BB8CE261BDE2DDA00D9370E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BB8CE101BDDF6F100D9370E /* YNLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B486F5941BC66C07002AF53D;
+			remoteInfo = YNLib;
+		};
 		BECE49AF1BDBDEB90038BD26 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BECE49921BDBDEB90038BD26 /* Project object */;
@@ -53,6 +62,20 @@
 			remoteInfo = RSSR;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7BB8CE281BDE2DDA00D9370E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7BB8CE251BDE2DDA00D9370E /* YNLib.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		681D8F47DA40EBEE0221764B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +109,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2C792CA8A1036A7E8133BCE /* Pods.framework in Frameworks */,
+				7BB8CE241BDE2DDA00D9370E /* YNLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,10 +237,12 @@
 				BECE49981BDBDEB90038BD26 /* Resources */,
 				25941851BB9EA7BFA2DBBBC9 /* Embed Pods Frameworks */,
 				2504F7466750CD9D4EBFCC2D /* Copy Pods Resources */,
+				7BB8CE281BDE2DDA00D9370E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7BB8CE271BDE2DDA00D9370E /* PBXTargetDependency */,
 			);
 			name = RSSR;
 			productName = RSSR;
@@ -435,6 +461,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7BB8CE271BDE2DDA00D9370E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = YNLib;
+			targetProxy = 7BB8CE261BDE2DDA00D9370E /* PBXContainerItemProxy */;
+		};
 		BECE49B01BDBDEB90038BD26 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BECE49991BDBDEB90038BD26 /* RSSR */;
@@ -549,6 +580,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = RSSR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nope.RSSR;
@@ -564,6 +596,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = RSSR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nope.RSSR;
