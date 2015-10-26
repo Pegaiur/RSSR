@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7BB8CE0C1BDDDBCE00D9370E /* RSSR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8CE0A1BDDDBCE00D9370E /* RSSR.xcdatamodeld */; };
+		7BB8CE1F1BDE2B2600D9370E /* CDItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8CE1B1BDE2B2600D9370E /* CDItem+CoreDataProperties.swift */; };
+		7BB8CE201BDE2B2600D9370E /* CDItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8CE1C1BDE2B2600D9370E /* CDItem.swift */; };
+		7BB8CE211BDE2B2600D9370E /* CDSource+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8CE1D1BDE2B2600D9370E /* CDSource+CoreDataProperties.swift */; };
+		7BB8CE221BDE2B2600D9370E /* CDSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8CE1E1BDE2B2600D9370E /* CDSource.swift */; };
 		BE067CC61BDD0A9B007FFEA9 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE067CC51BDD0A9B007FFEA9 /* WebViewController.swift */; };
 		BE067CC81BDD1D3B007FFEA9 /* SourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE067CC71BDD1D3B007FFEA9 /* SourceViewController.swift */; };
 		BECE499E1BDBDEB90038BD26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECE499D1BDBDEB90038BD26 /* AppDelegate.swift */; };
@@ -19,6 +24,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7BB8CE151BDDF6F100D9370E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BB8CE101BDDF6F100D9370E /* YNLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B486F5951BC66C07002AF53D;
+			remoteInfo = YNLib;
+		};
+		7BB8CE171BDDF6F100D9370E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BB8CE101BDDF6F100D9370E /* YNLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B486F59F1BC66C07002AF53D;
+			remoteInfo = YNLibTests;
+		};
 		BECE49AF1BDBDEB90038BD26 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BECE49921BDBDEB90038BD26 /* Project object */;
@@ -38,6 +57,12 @@
 /* Begin PBXFileReference section */
 		681D8F47DA40EBEE0221764B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		74611BB4007DFEAF24E6B5DC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7BB8CE0B1BDDDBCE00D9370E /* RSSR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RSSR.xcdatamodel; sourceTree = "<group>"; };
+		7BB8CE101BDDF6F100D9370E /* YNLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = YNLib.xcodeproj; path = RSSR/YNLib/YNLib.xcodeproj; sourceTree = "<group>"; };
+		7BB8CE1B1BDE2B2600D9370E /* CDItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7BB8CE1C1BDE2B2600D9370E /* CDItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDItem.swift; sourceTree = "<group>"; };
+		7BB8CE1D1BDE2B2600D9370E /* CDSource+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDSource+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7BB8CE1E1BDE2B2600D9370E /* CDSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDSource.swift; sourceTree = "<group>"; };
 		BE067CC51BDD0A9B007FFEA9 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		BE067CC71BDD1D3B007FFEA9 /* SourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceViewController.swift; sourceTree = "<group>"; };
 		BEC02838567AF640EB895C92 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,9 +114,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7BB8CE111BDDF6F100D9370E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7BB8CE161BDDF6F100D9370E /* YNLib.framework */,
+				7BB8CE181BDDF6F100D9370E /* YNLibTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7BB8CE1A1BDE2B1100D9370E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BB8CE1B1BDE2B2600D9370E /* CDItem+CoreDataProperties.swift */,
+				7BB8CE1C1BDE2B2600D9370E /* CDItem.swift */,
+				7BB8CE1D1BDE2B2600D9370E /* CDSource+CoreDataProperties.swift */,
+				7BB8CE1E1BDE2B2600D9370E /* CDSource.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		BECE49911BDBDEB90038BD26 = {
 			isa = PBXGroup;
 			children = (
+				7BB8CE101BDDF6F100D9370E /* YNLib.xcodeproj */,
 				BECE499C1BDBDEB90038BD26 /* RSSR */,
 				BECE49B11BDBDEB90038BD26 /* RSSRTests */,
 				BECE49BC1BDBDEB90038BD26 /* RSSRUITests */,
@@ -114,6 +160,7 @@
 		BECE499C1BDBDEB90038BD26 /* RSSR */ = {
 			isa = PBXGroup;
 			children = (
+				7BB8CE1A1BDE2B1100D9370E /* Model */,
 				BECE499D1BDBDEB90038BD26 /* AppDelegate.swift */,
 				BE067CC71BDD1D3B007FFEA9 /* SourceViewController.swift */,
 				BECE499F1BDBDEB90038BD26 /* MainViewController.swift */,
@@ -121,6 +168,7 @@
 				BECE49A41BDBDEB90038BD26 /* Assets.xcassets */,
 				BECE49A61BDBDEB90038BD26 /* LaunchScreen.storyboard */,
 				BECE49A91BDBDEB90038BD26 /* Info.plist */,
+				7BB8CE0A1BDDDBCE00D9370E /* RSSR.xcdatamodeld */,
 			);
 			path = RSSR;
 			sourceTree = "<group>";
@@ -245,6 +293,12 @@
 			mainGroup = BECE49911BDBDEB90038BD26;
 			productRefGroup = BECE499B1BDBDEB90038BD26 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 7BB8CE111BDDF6F100D9370E /* Products */;
+					ProjectRef = 7BB8CE101BDDF6F100D9370E /* YNLib.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				BECE49991BDBDEB90038BD26 /* RSSR */,
@@ -253,6 +307,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		7BB8CE161BDDF6F100D9370E /* YNLib.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = YNLib.framework;
+			remoteRef = 7BB8CE151BDDF6F100D9370E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7BB8CE181BDDF6F100D9370E /* YNLibTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = YNLibTests.xctest;
+			remoteRef = 7BB8CE171BDDF6F100D9370E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BECE49981BDBDEB90038BD26 /* Resources */ = {
@@ -334,9 +405,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BECE49A01BDBDEB90038BD26 /* MainViewController.swift in Sources */,
+				7BB8CE1F1BDE2B2600D9370E /* CDItem+CoreDataProperties.swift in Sources */,
+				7BB8CE221BDE2B2600D9370E /* CDSource.swift in Sources */,
 				BE067CC81BDD1D3B007FFEA9 /* SourceViewController.swift in Sources */,
 				BE067CC61BDD0A9B007FFEA9 /* WebViewController.swift in Sources */,
 				BECE499E1BDBDEB90038BD26 /* AppDelegate.swift in Sources */,
+				7BB8CE211BDE2B2600D9370E /* CDSource+CoreDataProperties.swift in Sources */,
+				7BB8CE0C1BDDDBCE00D9370E /* RSSR.xcdatamodeld in Sources */,
+				7BB8CE201BDE2B2600D9370E /* CDItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,6 +660,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7BB8CE0A1BDDDBCE00D9370E /* RSSR.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7BB8CE0B1BDDDBCE00D9370E /* RSSR.xcdatamodel */,
+			);
+			currentVersion = 7BB8CE0B1BDDDBCE00D9370E /* RSSR.xcdatamodel */;
+			path = RSSR.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BECE49921BDBDEB90038BD26 /* Project object */;
 }

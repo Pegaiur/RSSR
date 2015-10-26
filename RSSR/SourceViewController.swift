@@ -21,12 +21,13 @@ class SourceViewController: UITableViewController,MWFeedParserDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        for _ in 0...2 {
+        for _ in 0...3 {
             self.sources.append(RRSourceComplex())
         }
         self.sources[0].url = NSURL(string: "http://www.zhihu.com/rss")!
         self.sources[1].url = NSURL(string: "http://feeds.feedburner.com/zhihu-daily")!
         self.sources[2].url = NSURL(string: "http://v2ex.com/feed/tab/tech.xml")!
+        self.sources[3].url = NSURL(string: "http://techcrunch.cn/feed/")!
         for source in sources {
             let feedParser = MWFeedParser(feedURL: source.url)
             feedParser.delegate = self
