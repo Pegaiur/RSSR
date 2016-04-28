@@ -1,0 +1,9 @@
+platform :ios, '9.0'
+use_frameworks!
+
+pod 'MWFeedParser'
+pod 'SnapKit'
+pod 'SVProgressHUD'
+pod 'XCGLogger'
+pod 'YNLib', :git => 'https://github.com/stoprain/YNLib.git', :tag => '0.0.2'
+pod 'AsyncSwift'

@@ -22,30 +22,45 @@ class SourceViewController: UITableViewController,MWFeedParserDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        for _ in 0...4 {
-            self.sources.append(RRSourceComplex())
-        }
-        self.sources[0].url = NSURL(string: "http://www.zhihu.com/rss")!
-        self.sources[1].url = NSURL(string: "http://feeds.feedburner.com/zhihu-daily")!
-        self.sources[2].url = NSURL(string: "http://v2ex.com/feed/tab/tech.xml")!
-        self.sources[3].url = NSURL(string: "http://techcrunch.cn/feed/")!
-        self.sources[4].url = NSURL(string: "http://www.theverge.com/tech/rss/index.xml")!
-        for source in sources {
-            let feedParser = MWFeedParser(feedURL: source.url)
-            feedParser.delegate = self
-            feedParser.feedParseType = ParseTypeInfoOnly
-            feedParser.connectionType = ConnectionTypeAsynchronously
-            feedParser.parse()
-        }
-        SVProgressHUD.show()
+        
         self.navigationItem.title = "R S S R"
         
         let backItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backItem
         
+        self.checkUpdateStatus()
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
+    func checkUpdateStatus() {
+        if let context = CoreDataManager.sharedManager.mainContext {
+            let sources = CoreDataHelper.getManagedObjects(CDSource.self, context: context)
+            
+            if sources.count < 5 {
+                
+                
+                for _ in 0...4 {
+                    self.sources.append(RRSourceComplex())
+                }
+                self.sources[0].url = NSURL(string: "http://www.zhihu.com/rss")!
+                self.sources[1].url = NSURL(string: "http://feeds.feedburner.com/zhihu-daily")!
+                self.sources[2].url = NSURL(string: "http://v2ex.com/feed/tab/tech.xml")!
+                self.sources[3].url = NSURL(string: "http://techcrunch.cn/feed/")!
+                self.sources[4].url = NSURL(string: "http://www.theverge.com/tech/rss/index.xml")!
+                for source in self.sources {
+                    let feedParser = MWFeedParser(feedURL: source.url)
+                    feedParser.delegate = self
+                    feedParser.feedParseType = ParseTypeInfoOnly
+                    feedParser.connectionType = ConnectionTypeAsynchronously
+                    feedParser.parse()
+                }
+                SVProgressHUD.show()
+            } else {
+                
+            }
+            
+        }
+    }
 
     // MARK: - Table view data source
 
